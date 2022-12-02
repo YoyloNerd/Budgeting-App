@@ -1,5 +1,5 @@
 # A one day codeing challenge
-### im probs gonna updatse over the comming weeks
+### im probs gonna update over the comming weeks
 
 ## run 
 cd ./server &&npm install 
