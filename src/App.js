@@ -2,6 +2,7 @@ import {
   Box, VStack, Tabs, TabList, TabPanels, Tab, TabPanel, Select, Input, Button, Text, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, Stat, StatLabel, StatNumber
   , StatHelpText, Tag, Center, Switch, Spacer, Link, FormControl, Image
 } from '@chakra-ui/react'
+import bigDecimal from 'js-big-decimal';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -57,7 +58,7 @@ function App() {
         months: curMonths
       }]
     }
-    axios.post("http://localhost:5000/api/accounting/update", { accounts: [...accounts, newAccount] }, { withCredentials: true }).then(res => {
+    axios.post("/api/accounting/update", { accounts: [...accounts, newAccount] }, { withCredentials: true }).then(res => {
       if (res.data !== "No user") {
         setUser(res.data)
         setAccounts(res.data.accounts)
@@ -147,27 +148,23 @@ function App() {
   }
   const updateBalance = () => {
     const currentData = accounts[selectedAccount].years.filter(yearData => yearData.year === date[1])[0].months.filter(monthData => monthData.month === date[0])[0]
-    let balance = 0
+    let balance = new bigDecimal(0);
     currentData.monthlyIncome.forEach(income => {
-      balance += parseFloat
-        (income.amount)
+      balance = balance.add(new bigDecimal(income.amount))
     })
     currentData.monthlyExpenses.forEach(expense => {
-      balance -= parseFloat
-        (expense.amount)
+      balance = balance.subtract(new bigDecimal(expense.amount))
     })
     currentData.transactions.forEach(transaction => {
       if (transaction.type === "expense") {
-        balance -= parseFloat
-          (transaction.amount)
+        balance = balance.subtract(new bigDecimal(transaction.amount))
       } else {
-        balance += parseFloat
-          (transaction.amount)
+        balance = balance.add(new bigDecimal(transaction.amount))
       }
     })
-    currentData.balance = balance
+    currentData.balance = balance.getValue()
     setAccounts(accounts)
-    axios.post("http://localhost:5000/api/accounting/update", { accounts: accounts }, { withCredentials: true }).then(res => {
+    axios.post("/api/accounting/update", { accounts: accounts }, { withCredentials: true }).then(res => {
       if (res.data !== "No user") {
         setUser(res.data)
         setAccounts(res.data.accounts)
@@ -178,30 +175,26 @@ function App() {
     accounts.forEach(account => {
       account.years.forEach(year => {
         year.months.forEach(month => {
-          let balance = 0
+          let balance = new bigDecimal(0);
           month.monthlyIncome.forEach(income => {
-            balance += parseFloat
-              (income.amount)
+            balance = balance.add(new bigDecimal(income.amount))
           })
           month.monthlyExpenses.forEach(expense => {
-            balance -= parseFloat
-              (expense.amount)
+            balance = balance.subtract(new bigDecimal(expense.amount))
           })
           month.transactions.forEach(transaction => {
             if (transaction.type === "expense") {
-              balance -= parseFloat
-                (transaction.amount)
+              balance = balance.subtract(new bigDecimal(transaction.amount))
             } else {
-              balance += parseFloat
-                (transaction.amount)
+              balance = balance.add(new bigDecimal(transaction.amount))
             }
           })
-          month.balance = balance
+          month.balance = balance.getValue()
         })
       })
     })
     setAccounts(accounts)
-    axios.post("http://localhost:5000/api/accounting/update", { accounts: accounts }, { withCredentials: true }).then(res => {
+    axios.post("/api/accounting/update", { accounts: accounts }, { withCredentials: true }).then(res => {
       if (res.data !== "No user") {
         setUser(res.data)
         setAccounts(res.data.accounts)
@@ -284,6 +277,7 @@ function App() {
     } else {
       setDate([months[monthIndex + 1], date[1]])
     }
+    updateBalance()
   }
   const previousMonth = () => {
     const monthIndex = months.indexOf(date[0])
@@ -292,6 +286,7 @@ function App() {
     } else {
       setDate([months[monthIndex - 1], date[1]])
     }
+    updateBalance()
   }
   const nextYear = () => {
     // check if year exists
@@ -320,6 +315,7 @@ function App() {
       setAccounts(tempAccounts);
       setDate([date[0], date[1] + 1])
     }
+    updateBalance()
   }
   const previousYear = () => {
     //check if year exists
@@ -347,6 +343,7 @@ function App() {
       setAccounts(tempAccounts)
       setDate([date[0], date[1] - 1])
     }
+    updateBalance()
   }
   const deleteAccount = (index) => {
     accounts.splice(index, 1)
@@ -439,7 +436,7 @@ function App() {
                                 placeholder='amount'
                                 value={monthlyIncomeAmount}
                                 type="number"
-                                onChange={(e) => { setMonthlyIncomeAmount(parseFloat(e.target.value)) }}
+                                onChange={(e) => { setMonthlyIncomeAmount(e.target.value) }}
                               />
                               <Button onClick={() => { addMonthlyIncome() }}>add</Button>
                             </HStack>
@@ -466,9 +463,7 @@ function App() {
                                 placeholder='amount'
                                 value={monthlyExpensesAmount}
                                 type="number"
-                                onChange={(e) => {
-                                  setMonthlyExpensesAmount(parseFloat(e.target.value))
-                                }}
+                                onChange={(e) => { setMonthlyExpensesAmount(e.target.value) }}
                               />
                               <Button onClick={() => { addMonthlyExpenses() }}>add</Button>
                             </HStack>
@@ -496,7 +491,7 @@ function App() {
                                 value={transactionAmount}
                                 type="number"
                                 onChange={(e) => {
-                                  setTransactionAmount(parseFloat(e.target.value))
+                                  setTransactionAmount(e.target.value)
                                 }}
                               />
                               <Select w="20vw" value={transactionType} onChange={(e) => { setTransactionType(e.target.value) }}>
@@ -561,7 +556,7 @@ function App() {
           <ModalBody>
             <FormControl>
               <Input value={editTransactionName} onChange={(e) => setEditTransactionName(e.target.value)} />
-              <Input value={editTransactionAmount} type="number" onChange={(e) => setEditTransactionAmount(e.target.value)} />
+              <Input value={editTransactionAmount} type="number" onChange={(e) => setEditTransactionAmount(new bigDecimal(e.target.value))} />
               {editTransactionType && <Select w="20vw" value={transactionType} onChange={(e) => { setEditTransactionType(e.target.value) }}>
                 <option value='income'>income</option>
                 <option value='expense'>expense</option>
