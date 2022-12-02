@@ -1,0 +1,116 @@
+{
+    "data": [
+        {
+            "uuid":"asd",
+            "name": "Main Account",
+            "years": [
+                {
+                    "year": 2022,
+                    "months": [
+                        {
+                            "month": "January",
+                            "balance": 0,
+                            "monthlyIncome": [],
+                            "monthlyExpenses": [],
+                            "transactions": []
+                        },
+                        {
+                            "month": "February",
+                            "balance": 0,
+                            "monthlyIncome": [],
+                            "monthlyExpenses": [],
+                            "transactions": []
+                        },
+                        {
+                            "month": "March",
+                            "balance": 0,
+                            "monthlyIncome": [],
+                            "monthlyExpenses": [],
+                            "transactions": []
+                        },
+                        {
+                            "month": "April",
+                            "balance": 0,
+                            "monthlyIncome": [],
+                            "monthlyExpenses": [],
+                            "transactions": []
+                        },
+                        {
+                            "month": "May",
+                            "balance": 0,
+                            "monthlyIncome": [],
+                            "monthlyExpenses": [],
+                            "transactions": []
+                        },
+                        {
+                            "month": "June",
+                            "balance": 0,
+                            "monthlyIncome": [],
+                            "monthlyExpenses": [],
+                            "transactions": []
+                        },
+                        {
+                            "month": "July",
+                            "balance": 0,
+                            "monthlyIncome": [],
+                            "monthlyExpenses": [],
+                            "transactions": []
+                        },
+                        {
+                            "month": "August",
+                            "balance": 0,
+                            "monthlyIncome": [],
+                            "monthlyExpenses": [],
+                            "transactions": []
+                        },
+                        {
+                            "month": "September",
+                            "balance": 0,
+                            "monthlyIncome": [],
+                            "monthlyExpenses": [],
+                            "transactions": []
+                        },
+                        {
+                            "month": "October",
+                            "balance": 0,
+                            "monthlyIncome": [],
+                            "monthlyExpenses": [],
+                            "transactions": []
+                        },
+                        {
+                            "month": "November",
+                            "balance": 0,
+                            "monthlyIncome": [],
+                            "monthlyExpenses": [],
+                            "transactions": []
+                        },
+                        {
+                            "month": "December",
+                            "balance": 1000,
+                            "monthlyIncome": [
+                                {
+                                    "uuid": "1",
+                                    "amount": 450.98,
+                                    "source": "Salary"
+                                },
+                                {
+                                    "uuid": "2",
+                                    "amount": 111,
+                                    "source": "Side Job"
+                                }
+                            ],
+                            "monthlyExpenses": [
+                                {
+                                    "uuid": "3",
+                                    "amount": 10,
+                                    "to": "goodgirl fund"
+                                }
+                            ],
+                            "transactions": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
