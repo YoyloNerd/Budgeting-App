@@ -2,7 +2,7 @@
 ### im probs gonna update over the comming weeks
 
 ## run 
-cd ./server \ 
+cd ./server \
 npm install \
 cd ../frontend \
 npm install \
