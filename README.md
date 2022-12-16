@@ -1,5 +1,5 @@
-# A one day codeing challenge
-### im probs gonna update over the comming weeks
+# Was a one day codeing challenge
+
 
 ## install
 ```
