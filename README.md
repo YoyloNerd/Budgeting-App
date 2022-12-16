@@ -13,7 +13,7 @@ npm install \
 run npm start in the frontend directory and the server directory
 
 ## frontend folder needs a .env file containing:
-REACT_APP_BASE_URL=true
+```REACT_APP_BASE_URL=true```
 ## server folder needs a .env file containing:
 ```
 DATABASE_URL= mongo url `exaple: mondodb://localhost:27017/BudgetingDB` \
