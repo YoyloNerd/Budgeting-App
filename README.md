@@ -2,8 +2,10 @@
 ### im probs gonna update over the comming weeks
 
 ## run 
-cd ./server && npm install 
-cd ../frontend && npm install
+cd ./server \ 
+npm install \
+cd ../frontend \
+npm install \
 and run npm start in the main directory and the server directory
 
 ## frontend folder needs a .env file containing:
