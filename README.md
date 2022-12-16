@@ -1,4 +1,5 @@
-# Was a one day codeing challenge
+# A Budgetting website
+## Was a one day codeing challenge
 
 
 ## install
