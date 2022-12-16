@@ -6,7 +6,7 @@ cd ./server \
 npm install \
 cd ../frontend \
 npm install \
-and run npm start in the main directory and the server directory
+and run npm start in the frontend directory and the server directory
 
 ## frontend folder needs a .env file containing:
 REACT_APP_BASE_URL=true
