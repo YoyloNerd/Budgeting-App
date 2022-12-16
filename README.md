@@ -1,12 +1,14 @@
 # A one day codeing challenge
 ### im probs gonna update over the comming weeks
 
-## run 
+## install
 cd ./server \
 npm install \
 cd ../frontend \
 npm install \
-and run npm start in the frontend directory and the server directory
+
+## run
+run npm start in the frontend directory and the server directory
 
 ## frontend folder needs a .env file containing:
 REACT_APP_BASE_URL=true
