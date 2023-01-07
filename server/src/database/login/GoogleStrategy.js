@@ -28,7 +28,7 @@ passport.use('google', new GoogleStrategy({
     passReqToCallback: true
 }, async (req, accessToken, refreshToken, profile, done) => {
     const { id, displayName } = profile;
-    console.log(profile)
+    
     try {
         const findUser = await Account.findOne({ googleID: id })
         if (findUser) {

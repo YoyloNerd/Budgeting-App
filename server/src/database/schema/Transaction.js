@@ -7,15 +7,12 @@ const dataSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    name: {
-        type: String,
-    },
-    amount: {
-        type: Number,
-    },
-    type: {
-        type: String,
-    },
+    name: String,
+    amount: Number,
+    to: String,//uuid of account if it is a transfer
+    type: String, //income, expense, transfer
+    startDate: String,// year-month-day:xxxx-xx-xx
+    endDate: String// year-month-day:xxxx-xx-xx
 });
 
 module.exports = mongoose.model('Transaction', dataSchema)

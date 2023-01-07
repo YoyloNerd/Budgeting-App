@@ -21,28 +21,12 @@ const dataSchema = new mongoose.Schema({
                 type: String,
                 required: true,
             },
-            years: [
+            uuid: String,
+            months: [
                 {
-                    year: {
-                        type: Number,
-                    },
-                    months: [
-                        {
-                            month: {
-                                type: String,
-                            },
-                            balance: {
-                                type: Number,
-                            },
-                            transactions: [
-                                {
-                                    uuid: {
-                                        type: String,
-                                    }
-                                },
-                            ],
-                        },
-                    ],
+                    date: String,// year-month:xxxx-xx
+                    balance: Number,
+                    transactions: [String]
                 },
             ],
         }

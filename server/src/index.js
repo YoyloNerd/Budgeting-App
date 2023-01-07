@@ -18,7 +18,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 const cors = require('cors')
-const whitelist = ['http://localhost:3000', 'https://yoylo.moe', 'http://localhost:5000'];
+const whitelist = ['http://localhost:3000', 'http://localhost:5000'];
 app.use(cors({
   origin: whitelist,
   credentials: true,

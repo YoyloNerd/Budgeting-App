@@ -1,0 +1,16 @@
+{
+    "primary": "#0D3B40",
+    "secondary": "#14717B",
+    "background": "#105057",
+    "tertiary": "#24B5C5",
+    "quaternary":"#454545",
+    "border": "#707070",
+    "chevron":"white",
+    "textTitle": "#E9E5F9",
+    "textPrimary": "white",
+    "error":"#D53535",
+    "nav":"0,0,25",
+    "textLogin": "white",
+    "googleLogin": "#4285F4",
+    "discordLogin": "#595959"
+}

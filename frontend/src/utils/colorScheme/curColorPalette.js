@@ -1,0 +1,54 @@
+export default function curColorPalette() {
+    // let palette = ""
+    // try {
+    //     palette = require(`./${localStorage.getItem("colorPalette")}.json`);
+    // } catch (err) {
+    //     palette = null;
+    // }
+    // if (palette !== null)
+    //     return {
+    //         "primary": palette.primary,
+    //         "secondary": palette.secondary,
+    //         "background": palette.background,
+    //         "tertiary": palette.tertiary,
+    //         "quaternary": palette.quaternary,
+    //         "border": palette.border,
+    //         "chevron": palette.chevron,
+    //         "textTitle": palette.textTitle,
+    //         "textPrimary": palette.textPrimary,
+    //         "error": palette.error,
+    //         "nav":palette.nav,
+    //         "textLogin": palette.textLogin,
+    //         "googleLogin": palette.googleLogin,
+    //         "discordLogin": palette.discordLogin,
+    //         "white":"#FFFFFF",
+    //         "Expire": {
+    //             "later": palette.secondary,
+    //             "soon": "#FFC933",
+    //             "today": "#DD595E",
+    //         }
+    //     }
+    return {
+        "tertiary": "#008387",
+        "secondary": "#00566E",
+        "primary": "#112D43",
+        "accent":"#97E683",
+        "textAccented":"#8ED87B",
+        "border": "#707070",
+        "chevron":"white",
+        "textTitle": "#E9E5F9",
+        "textPrimary": "white",
+        "error":"#D53535",
+        "nav":"0,0,25",
+        "textLogin": "white",
+        "googleLogin": "#4285F4",
+        "discordLogin": "#595959",
+        "white":"#FFFFFF",
+        "Expire": {
+            "later": "#161616",
+            "soon": "#DDCA3A",
+            "today": "#DD595E",
+        },
+        "spacing":3
+    }
+}
